@@ -11,6 +11,7 @@ service MessageService {
 message MessageRequest {
   int64 chat_id = 1;
   string message = 2;
+  string URL = 3;
 }
 
 message MessageResponse {

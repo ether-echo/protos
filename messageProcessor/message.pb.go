@@ -25,6 +25,7 @@ type MessageRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ChatId        int64                  `protobuf:"varint,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
 	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	URL           string                 `protobuf:"bytes,3,opt,name=URL,proto3" json:"URL,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -69,6 +70,13 @@ func (x *MessageRequest) GetChatId() int64 {
 func (x *MessageRequest) GetMessage() string {
 	if x != nil {
 		return x.Message
+	}
+	return ""
+}
+
+func (x *MessageRequest) GetURL() string {
+	if x != nil {
+		return x.URL
 	}
 	return ""
 }
@@ -121,10 +129,11 @@ var File_message_proto protoreflect.FileDescriptor
 
 const file_message_proto_rawDesc = "" +
 	"\n" +
-	"\rmessage.proto\x12\amessage\"C\n" +
+	"\rmessage.proto\x12\amessage\"U\n" +
 	"\x0eMessageRequest\x12\x17\n" +
 	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"+\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\x12\x10\n" +
+	"\x03URL\x18\x03 \x01(\tR\x03URL\"+\n" +
 	"\x0fMessageResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2R\n" +
 	"\x0eMessageService\x12@\n" +
