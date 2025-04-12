@@ -23,7 +23,7 @@ const (
 
 type MessageRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        string                 `protobuf:"bytes,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
+	ChatId        int64                  `protobuf:"varint,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
 	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -59,11 +59,11 @@ func (*MessageRequest) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *MessageRequest) GetChatId() string {
+func (x *MessageRequest) GetChatId() int64 {
 	if x != nil {
 		return x.ChatId
 	}
-	return ""
+	return 0
 }
 
 func (x *MessageRequest) GetMessage() string {
@@ -123,7 +123,7 @@ const file_message_proto_rawDesc = "" +
 	"\n" +
 	"\rmessage.proto\x12\amessage\"C\n" +
 	"\x0eMessageRequest\x12\x17\n" +
-	"\achat_id\x18\x01 \x01(\tR\x06chatId\x12\x18\n" +
+	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\"+\n" +
 	"\x0fMessageResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2R\n" +
