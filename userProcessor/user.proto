@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "/;userProcessor";
+
+service MessageService {
+  rpc StartMessage (StartRequest) returns (StartResponse);
+}
+
+message StartRequest {
+  int64 chat_id = 1;
+  bool exist = 2;
+}
+
+message StartResponse {
+  bool success = 1;
+}
