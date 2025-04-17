@@ -10,7 +10,8 @@ service UserService {
 
 message StartRequest {
   int64 chat_id = 1;
-  bool exist = 2;
+  string first_name = 2;
+  bool exist = 3;
 }
 
 message StartResponse {
