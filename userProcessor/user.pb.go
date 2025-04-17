@@ -127,8 +127,8 @@ const file_user_proto_rawDesc = "" +
 	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x14\n" +
 	"\x05exist\x18\x02 \x01(\bR\x05exist\")\n" +
 	"\rStartResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2I\n" +
-	"\x0eMessageService\x127\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2F\n" +
+	"\vUserService\x127\n" +
 	"\fStartMessage\x12\x12.user.StartRequest\x1a\x13.user.StartResponseB\x11Z\x0f/;userProcessorb\x06proto3"
 
 var (
@@ -149,8 +149,8 @@ var file_user_proto_goTypes = []any{
 	(*StartResponse)(nil), // 1: user.StartResponse
 }
 var file_user_proto_depIdxs = []int32{
-	0, // 0: user.MessageService.StartMessage:input_type -> user.StartRequest
-	1, // 1: user.MessageService.StartMessage:output_type -> user.StartResponse
+	0, // 0: user.UserService.StartMessage:input_type -> user.StartRequest
+	1, // 1: user.UserService.StartMessage:output_type -> user.StartResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

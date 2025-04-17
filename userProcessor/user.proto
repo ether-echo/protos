@@ -4,7 +4,7 @@ package user;
 
 option go_package = "/;userProcessor";
 
-service MessageService {
+service UserService {
   rpc StartMessage (StartRequest) returns (StartResponse);
 }
 
