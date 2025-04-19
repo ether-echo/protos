@@ -6,6 +6,7 @@ option go_package = "/;userProcessor";
 
 service UserService {
   rpc StartMessage (StartRequest) returns (StartResponse);
+  rpc SaveMessage (MessageRequest) returns (MessageResponse);
 }
 
 message StartRequest {
@@ -15,5 +16,14 @@ message StartRequest {
 }
 
 message StartResponse {
+  bool success = 1;
+}
+
+message MessageRequest {
+  int64 chat_id = 1;
+  string message = 2;
+}
+
+message MessageResponse {
   bool success = 1;
 }
