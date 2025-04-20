@@ -224,7 +224,7 @@ func (x *MessageResponse) GetSuccess() bool {
 type SetTaroRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ChatId        int64                  `protobuf:"varint,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
-	Exist         bool                   `protobuf:"varint,3,opt,name=exist,proto3" json:"exist,omitempty"`
+	Exist         bool                   `protobuf:"varint,2,opt,name=exist,proto3" json:"exist,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -275,7 +275,8 @@ func (x *SetTaroRequest) GetExist() bool {
 
 type SetTaroResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	TaroIsGot     bool                   `protobuf:"varint,1,opt,name=taroIsGot,proto3" json:"taroIsGot,omitempty"`
+	Success       bool                   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -310,6 +311,13 @@ func (*SetTaroResponse) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{5}
 }
 
+func (x *SetTaroResponse) GetTaroIsGot() bool {
+	if x != nil {
+		return x.TaroIsGot
+	}
+	return false
+}
+
 func (x *SetTaroResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
@@ -337,9 +345,10 @@ const file_user_proto_rawDesc = "" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"?\n" +
 	"\x0eSetTaroRequest\x12\x17\n" +
 	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x14\n" +
-	"\x05exist\x18\x03 \x01(\bR\x05exist\"+\n" +
-	"\x0fSetTaroResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xba\x01\n" +
+	"\x05exist\x18\x02 \x01(\bR\x05exist\"I\n" +
+	"\x0fSetTaroResponse\x12\x1c\n" +
+	"\ttaroIsGot\x18\x01 \x01(\bR\ttaroIsGot\x12\x18\n" +
+	"\asuccess\x18\x02 \x01(\bR\asuccess2\xba\x01\n" +
 	"\vUserService\x127\n" +
 	"\fStartMessage\x12\x12.user.StartRequest\x1a\x13.user.StartResponse\x12:\n" +
 	"\vSaveMessage\x12\x14.user.MessageRequest\x1a\x15.user.MessageResponse\x126\n" +

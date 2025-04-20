@@ -31,9 +31,10 @@ message MessageResponse {
 
 message SetTaroRequest {
   int64 chat_id = 1;
-  bool exist = 3;
+  bool exist = 2;
 }
 
 message SetTaroResponse {
-  bool success = 1;
+  bool taroIsGot = 1;
+  bool success = 2;
 }
