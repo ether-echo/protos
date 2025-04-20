@@ -221,6 +221,102 @@ func (x *MessageResponse) GetSuccess() bool {
 	return false
 }
 
+type SetTaroRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ChatId        int64                  `protobuf:"varint,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
+	Exist         bool                   `protobuf:"varint,3,opt,name=exist,proto3" json:"exist,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetTaroRequest) Reset() {
+	*x = SetTaroRequest{}
+	mi := &file_user_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetTaroRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetTaroRequest) ProtoMessage() {}
+
+func (x *SetTaroRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetTaroRequest.ProtoReflect.Descriptor instead.
+func (*SetTaroRequest) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *SetTaroRequest) GetChatId() int64 {
+	if x != nil {
+		return x.ChatId
+	}
+	return 0
+}
+
+func (x *SetTaroRequest) GetExist() bool {
+	if x != nil {
+		return x.Exist
+	}
+	return false
+}
+
+type SetTaroResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetTaroResponse) Reset() {
+	*x = SetTaroResponse{}
+	mi := &file_user_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetTaroResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetTaroResponse) ProtoMessage() {}
+
+func (x *SetTaroResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetTaroResponse.ProtoReflect.Descriptor instead.
+func (*SetTaroResponse) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *SetTaroResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_user_proto protoreflect.FileDescriptor
 
 const file_user_proto_rawDesc = "" +
@@ -238,10 +334,16 @@ const file_user_proto_rawDesc = "" +
 	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\"+\n" +
 	"\x0fMessageResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\x82\x01\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"?\n" +
+	"\x0eSetTaroRequest\x12\x17\n" +
+	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x14\n" +
+	"\x05exist\x18\x03 \x01(\bR\x05exist\"+\n" +
+	"\x0fSetTaroResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xba\x01\n" +
 	"\vUserService\x127\n" +
 	"\fStartMessage\x12\x12.user.StartRequest\x1a\x13.user.StartResponse\x12:\n" +
-	"\vSaveMessage\x12\x14.user.MessageRequest\x1a\x15.user.MessageResponseB\x11Z\x0f/;userProcessorb\x06proto3"
+	"\vSaveMessage\x12\x14.user.MessageRequest\x1a\x15.user.MessageResponse\x126\n" +
+	"\aSetTaro\x12\x14.user.SetTaroRequest\x1a\x15.user.SetTaroResponseB\x11Z\x0f/;userProcessorb\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once
@@ -255,20 +357,24 @@ func file_user_proto_rawDescGZIP() []byte {
 	return file_user_proto_rawDescData
 }
 
-var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_user_proto_goTypes = []any{
 	(*StartRequest)(nil),    // 0: user.StartRequest
 	(*StartResponse)(nil),   // 1: user.StartResponse
 	(*MessageRequest)(nil),  // 2: user.MessageRequest
 	(*MessageResponse)(nil), // 3: user.MessageResponse
+	(*SetTaroRequest)(nil),  // 4: user.SetTaroRequest
+	(*SetTaroResponse)(nil), // 5: user.SetTaroResponse
 }
 var file_user_proto_depIdxs = []int32{
 	0, // 0: user.UserService.StartMessage:input_type -> user.StartRequest
 	2, // 1: user.UserService.SaveMessage:input_type -> user.MessageRequest
-	1, // 2: user.UserService.StartMessage:output_type -> user.StartResponse
-	3, // 3: user.UserService.SaveMessage:output_type -> user.MessageResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	4, // 2: user.UserService.SetTaro:input_type -> user.SetTaroRequest
+	1, // 3: user.UserService.StartMessage:output_type -> user.StartResponse
+	3, // 4: user.UserService.SaveMessage:output_type -> user.MessageResponse
+	5, // 5: user.UserService.SetTaro:output_type -> user.SetTaroResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -285,7 +391,7 @@ func file_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

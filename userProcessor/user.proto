@@ -7,6 +7,7 @@ option go_package = "/;userProcessor";
 service UserService {
   rpc StartMessage (StartRequest) returns (StartResponse);
   rpc SaveMessage (MessageRequest) returns (MessageResponse);
+  rpc SetTaro (SetTaroRequest) returns (SetTaroResponse);
 }
 
 message StartRequest {
@@ -25,5 +26,14 @@ message MessageRequest {
 }
 
 message MessageResponse {
+  bool success = 1;
+}
+
+message SetTaroRequest {
+  int64 chat_id = 1;
+  bool exist = 3;
+}
+
+message SetTaroResponse {
   bool success = 1;
 }

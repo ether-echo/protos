@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	UserService_StartMessage_FullMethodName = "/user.UserService/StartMessage"
 	UserService_SaveMessage_FullMethodName  = "/user.UserService/SaveMessage"
+	UserService_SetTaro_FullMethodName      = "/user.UserService/SetTaro"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -29,6 +30,7 @@ const (
 type UserServiceClient interface {
 	StartMessage(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*StartResponse, error)
 	SaveMessage(ctx context.Context, in *MessageRequest, opts ...grpc.CallOption) (*MessageResponse, error)
+	SetTaro(ctx context.Context, in *SetTaroRequest, opts ...grpc.CallOption) (*SetTaroResponse, error)
 }
 
 type userServiceClient struct {
@@ -59,12 +61,23 @@ func (c *userServiceClient) SaveMessage(ctx context.Context, in *MessageRequest,
 	return out, nil
 }
 
+func (c *userServiceClient) SetTaro(ctx context.Context, in *SetTaroRequest, opts ...grpc.CallOption) (*SetTaroResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetTaroResponse)
+	err := c.cc.Invoke(ctx, UserService_SetTaro_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
 type UserServiceServer interface {
 	StartMessage(context.Context, *StartRequest) (*StartResponse, error)
 	SaveMessage(context.Context, *MessageRequest) (*MessageResponse, error)
+	SetTaro(context.Context, *SetTaroRequest) (*SetTaroResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -80,6 +93,9 @@ func (UnimplementedUserServiceServer) StartMessage(context.Context, *StartReques
 }
 func (UnimplementedUserServiceServer) SaveMessage(context.Context, *MessageRequest) (*MessageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SaveMessage not implemented")
+}
+func (UnimplementedUserServiceServer) SetTaro(context.Context, *SetTaroRequest) (*SetTaroResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTaro not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -138,6 +154,24 @@ func _UserService_SaveMessage_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_SetTaro_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetTaroRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).SetTaro(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_SetTaro_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).SetTaro(ctx, req.(*SetTaroRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +186,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SaveMessage",
 			Handler:    _UserService_SaveMessage_Handler,
+		},
+		{
+			MethodName: "SetTaro",
+			Handler:    _UserService_SetTaro_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
