@@ -8,6 +8,7 @@ service UserService {
   rpc StartMessage (StartRequest) returns (StartResponse);
   rpc SaveMessage (MessageRequest) returns (MessageResponse);
   rpc SetTaro (SetTaroRequest) returns (SetTaroResponse);
+  rpc GetAllUsers(Empty) returns (UserList);
 }
 
 message StartRequest {
@@ -38,3 +39,16 @@ message SetTaroResponse {
   bool taroIsGot = 1;
   bool success = 2;
 }
+
+message User {
+  int64 chat_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string username = 4;
+}
+
+message UserList {
+  repeated User users = 1;
+}
+
+message Empty {}
