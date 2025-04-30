@@ -9,6 +9,7 @@ service UserService {
   rpc SaveMessage (MessageRequest) returns (MessageResponse);
   rpc SetTaro (SetTaroRequest) returns (SetTaroResponse);
   rpc GetAllUsers(Empty) returns (UserList);
+  rpc GetAllID(Empty) returns (IdList);
 }
 
 message StartRequest {
@@ -49,6 +50,10 @@ message User {
 
 message UserList {
   repeated User users = 1;
+}
+
+message IdList {
+  repeated int64 ids = 1;
 }
 
 message Empty {}

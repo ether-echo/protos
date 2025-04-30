@@ -437,6 +437,50 @@ func (x *UserList) GetUsers() []*User {
 	return nil
 }
 
+type IdList struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ids           []int64                `protobuf:"varint,1,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *IdList) Reset() {
+	*x = IdList{}
+	mi := &file_user_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *IdList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IdList) ProtoMessage() {}
+
+func (x *IdList) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IdList.ProtoReflect.Descriptor instead.
+func (*IdList) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *IdList) GetIds() []int64 {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
 type Empty struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -445,7 +489,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_user_proto_msgTypes[8]
+	mi := &file_user_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -457,7 +501,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[8]
+	mi := &file_user_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -470,7 +514,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{8}
+	return file_user_proto_rawDescGZIP(), []int{9}
 }
 
 var File_user_proto protoreflect.FileDescriptor
@@ -505,13 +549,16 @@ const file_user_proto_rawDesc = "" +
 	"\busername\x18\x04 \x01(\tR\busername\",\n" +
 	"\bUserList\x12 \n" +
 	"\x05users\x18\x01 \x03(\v2\n" +
-	".user.UserR\x05users\"\a\n" +
-	"\x05Empty2\xe6\x01\n" +
+	".user.UserR\x05users\"\x1a\n" +
+	"\x06IdList\x12\x10\n" +
+	"\x03ids\x18\x01 \x03(\x03R\x03ids\"\a\n" +
+	"\x05Empty2\x8d\x02\n" +
 	"\vUserService\x127\n" +
 	"\fStartMessage\x12\x12.user.StartRequest\x1a\x13.user.StartResponse\x12:\n" +
 	"\vSaveMessage\x12\x14.user.MessageRequest\x1a\x15.user.MessageResponse\x126\n" +
 	"\aSetTaro\x12\x14.user.SetTaroRequest\x1a\x15.user.SetTaroResponse\x12*\n" +
-	"\vGetAllUsers\x12\v.user.Empty\x1a\x0e.user.UserListB\x11Z\x0f/;userProcessorb\x06proto3"
+	"\vGetAllUsers\x12\v.user.Empty\x1a\x0e.user.UserList\x12%\n" +
+	"\bGetAllID\x12\v.user.Empty\x1a\f.user.IdListB\x11Z\x0f/;userProcessorb\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once
@@ -525,7 +572,7 @@ func file_user_proto_rawDescGZIP() []byte {
 	return file_user_proto_rawDescData
 }
 
-var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_user_proto_goTypes = []any{
 	(*StartRequest)(nil),    // 0: user.StartRequest
 	(*StartResponse)(nil),   // 1: user.StartResponse
@@ -535,20 +582,23 @@ var file_user_proto_goTypes = []any{
 	(*SetTaroResponse)(nil), // 5: user.SetTaroResponse
 	(*User)(nil),            // 6: user.User
 	(*UserList)(nil),        // 7: user.UserList
-	(*Empty)(nil),           // 8: user.Empty
+	(*IdList)(nil),          // 8: user.IdList
+	(*Empty)(nil),           // 9: user.Empty
 }
 var file_user_proto_depIdxs = []int32{
 	6, // 0: user.UserList.users:type_name -> user.User
 	0, // 1: user.UserService.StartMessage:input_type -> user.StartRequest
 	2, // 2: user.UserService.SaveMessage:input_type -> user.MessageRequest
 	4, // 3: user.UserService.SetTaro:input_type -> user.SetTaroRequest
-	8, // 4: user.UserService.GetAllUsers:input_type -> user.Empty
-	1, // 5: user.UserService.StartMessage:output_type -> user.StartResponse
-	3, // 6: user.UserService.SaveMessage:output_type -> user.MessageResponse
-	5, // 7: user.UserService.SetTaro:output_type -> user.SetTaroResponse
-	7, // 8: user.UserService.GetAllUsers:output_type -> user.UserList
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
+	9, // 4: user.UserService.GetAllUsers:input_type -> user.Empty
+	9, // 5: user.UserService.GetAllID:input_type -> user.Empty
+	1, // 6: user.UserService.StartMessage:output_type -> user.StartResponse
+	3, // 7: user.UserService.SaveMessage:output_type -> user.MessageResponse
+	5, // 8: user.UserService.SetTaro:output_type -> user.SetTaroResponse
+	7, // 9: user.UserService.GetAllUsers:output_type -> user.UserList
+	8, // 10: user.UserService.GetAllID:output_type -> user.IdList
+	6, // [6:11] is the sub-list for method output_type
+	1, // [1:6] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -565,7 +615,7 @@ func file_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
