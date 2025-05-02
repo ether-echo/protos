@@ -27,6 +27,7 @@ type MessageRequest struct {
 	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 	URL           string                 `protobuf:"bytes,3,opt,name=URL,proto3" json:"URL,omitempty"`
 	Command       string                 `protobuf:"bytes,4,opt,name=command,proto3" json:"command,omitempty"`
+	Sub           bool                   `protobuf:"varint,5,opt,name=sub,proto3" json:"sub,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -89,6 +90,13 @@ func (x *MessageRequest) GetCommand() string {
 	return ""
 }
 
+func (x *MessageRequest) GetSub() bool {
+	if x != nil {
+		return x.Sub
+	}
+	return false
+}
+
 type MessageResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
@@ -137,12 +145,13 @@ var File_message_proto protoreflect.FileDescriptor
 
 const file_message_proto_rawDesc = "" +
 	"\n" +
-	"\rmessage.proto\x12\amessage\"o\n" +
+	"\rmessage.proto\x12\amessage\"\x81\x01\n" +
 	"\x0eMessageRequest\x12\x17\n" +
 	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x10\n" +
 	"\x03URL\x18\x03 \x01(\tR\x03URL\x12\x18\n" +
-	"\acommand\x18\x04 \x01(\tR\acommand\"+\n" +
+	"\acommand\x18\x04 \x01(\tR\acommand\x12\x10\n" +
+	"\x03sub\x18\x05 \x01(\bR\x03sub\"+\n" +
 	"\x0fMessageResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2R\n" +
 	"\x0eMessageService\x12@\n" +

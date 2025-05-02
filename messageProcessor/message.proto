@@ -13,6 +13,7 @@ message MessageRequest {
   string message = 2;
   string URL = 3;
   string command = 4;
+  bool sub = 5;
 }
 
 message MessageResponse {
